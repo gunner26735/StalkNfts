@@ -4,6 +4,7 @@ const baseURL = 'https://api.covalenthq.com/v1'
 const blockchainChainId = '1'
 const demoAddress = '0xe4605d46fd0b3f8329d936a8b258d69276cba264'
 const token_ids = []
+let output = "";
 async function getNftData(chainId, address, token_id) {
 
 	const url = new URL(`${baseURL}/${chainId}/tokens/${address}/nft_metadata/${token_id}/?key=${APIKEY}`);
@@ -11,7 +12,7 @@ async function getNftData(chainId, address, token_id) {
 	const response = await fetch(url);
 	const result = await response.json();
 	const data = result.data.items[0].nft_data[0];
-	//console.log("Data = ", data)
+	console.log("Data = ", data)
 	const tokenid = data.token_id;
 	const name_l = data["external_data"].name;
 	const description_l = data["external_data"].description;
@@ -21,7 +22,9 @@ async function getNftData(chainId, address, token_id) {
 	console.log("Price = " + price)
 	pushData(name_l, description_l, image_l, price);
 	return data;
-}
+} 
+
+console.log("Hello")
 async function getTokenData(chainId, address) {
 	const url = new URL(`${baseURL}/${chainId}/tokens/${address}/nft_token_ids/?key=${APIKEY}`);
 
@@ -29,18 +32,21 @@ async function getTokenData(chainId, address) {
 	const result = await response.json();
 	const data = result.data.items;
 	// do data.length to make it dynamic
-	for (var i = 0; i < 10; i++) {
-		token_ids[i] = data[i]["token_id"]
-		getNftData(blockchainChainId, demoAddress, token_ids[i]);
+	for (var i = 0; i <7; i++) {
+		//token_ids[i] = data[i]["token_id"]
+		getNftData(blockchainChainId, demoAddress, data[i]["token_id"]);
 	}
-	//console.log(token_ids)
+	console.log(token_ids)
 	
 }
+
+getTokenData(blockchainChainId, demoAddress);
+
 
 function pushData(name_l, desc, image, price) {
 	output += `
 			<div class="product">
-				<img class = "img" src="${image}" alt="${desc}">
+			<img src="${image}" alt="${desc}">
 				<p class="name">${name_l}</p>
 				<p class="description">${desc}</p>
 				<p class="price">
@@ -51,10 +57,8 @@ function pushData(name_l, desc, image, price) {
 			</div>
 		`;
 		document.querySelector(".products").innerHTML = output;
-}
+} 
 
 
 
 // Example address request
-
-getTokenData(blockchainChainId, demoAddress);
