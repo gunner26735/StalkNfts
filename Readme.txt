@@ -1,6 +1,2 @@
-Thanks for downloading this template!
-
-Template Name: Selecao
-Template URL: https://bootstrapmade.com/selecao-bootstrap-template/
-Author: BootstrapMade.com
-License: https://bootstrapmade.com/license/
+The project was built on 17th eve ,18th 3:20 AM
+Run index.html on Live Server to run the app 
