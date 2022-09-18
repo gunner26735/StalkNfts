@@ -3,7 +3,9 @@ const APIKEY = 'ckey_bcf2a8cd82204dc3a01733fa007';
 const baseURL = 'https://api.covalenthq.com/v1';
 var blockchainChainId;
 var demoAddress =" ";
-//= '0xDc35C75d027E4E65824cC656f655BcA90505C722'// IMP addr : 0xe4605d46fd0b3f8329d936a8b258d69276cba264
+//= '0xDc35C75d027E4E65824cC656f655BcA90505C722'// IMP addr : 0xe4605d46fd0b3f8329d936a8b258d69276cba264 
+//Addr 1: 0x6b89621399EC71829E266DD25bB45a8741FB0A5E
+//Assr2: 0x85Ad9d1FCF50b72255E4288dcA0ad29f5f509409
 const token_ids = []
 let output = "";
 async function getNftData(chainId, address) {
@@ -22,12 +24,14 @@ async function getNftData(chainId, address) {
 			for (var j = 0; j < data[i]["nft_data"].length; j++) {
 				console.log("Nft = " + data[i]["nft_data"][j].external_data["name"])
 				const name_l = data[i]["nft_data"][j].external_data["name"];
-				const description_l = data[i]["nft_data"][j].external_data["description"];
-				const image_l = data[i]["nft_data"][j].external_data["image"];
+				const description_l = (data[i]["nft_data"][j].external_data["description"]).substring(0,200);
+				const image_l = data[i]["nft_data"][j].external_data["image_256"];
 				const price = data[i]["nft_data"][j].token_quote_rate_eth
 				console.log("Nft Name = " + name_l + "Description =" + description_l + "image=" + image_l)
+				if((name_l.includes("Airdrop") || name_l.includes("AIRDROP-PASS")) != true){
+					pushData(name_l, description_l, image_l, price);
 
-				pushData(name_l, description_l, image_l, price);
+				}
 
 
 			}
