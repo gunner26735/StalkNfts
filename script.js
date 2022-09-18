@@ -72,7 +72,7 @@ function pushData(name_l, desc, image, price) {
 	output += `
 	<div class="grid__item">
 	
-		<div class="card"><img class="card__img" src=${image}" alt="NFT IMAGE">
+		<div class="card"><img class="card__img" src="${image}" alt="NFT IMAGE">
 		<div class="card__content">
 			<h1 class="card__header">${name_l}</h1>
 			<p class="card__text">${desc} </p>
