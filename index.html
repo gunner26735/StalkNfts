@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<!--   <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -74,8 +74,11 @@
         <div class="carousel-container">
           <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Stalk NFt's</span></h2>
           <p class="animate__animated fanimate__adeInUp">Stalk NFT Aims to provide a very rich platform to users where they can watch all of their holding in NFT's.</p>
-          <input type="text" id="waddress" class="btn-get-started animate__animated animate__fadeInUp scrollto" style="color: black;" placeholder="Enter Wallet Address">
-          <a href="#about" value="search" class="btn-get-started animate__animated animate__fadeInUp scrollto">Search</a>
+          <form>  
+          <input type="text" id="waddress" class="btn-get-started animate__animated animate__fadeInUp scrollto" style="color: black;" placeholder="Enter Wallet Address"><br>
+          <input type="submit" value="Search" onsubmit="getaddr()" class="btn-get-started animate__animated animate__fadeInUp scrollto"/>
+        </form>
+
         </div>
       </div>
 

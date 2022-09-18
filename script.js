@@ -1,8 +1,10 @@
 
 const APIKEY = 'ckey_bcf2a8cd82204dc3a01733fa007';
-const baseURL = 'https://api.covalenthq.com/v1'
+const baseURL = 'https://api.covalenthq.com/v1';
+const addr = document.getElementById("waddress").value;
+console.log("Address is "+addr);
 const blockchainChainId = '1'
-const demoAddress = '0xe4605d46fd0b3f8329d936a8b258d69276cba264'
+const demoAddress = '0xDc35C75d027E4E65824cC656f655BcA90505C722'// IMP addr : 0xe4605d46fd0b3f8329d936a8b258d69276cba264
 const token_ids = []
 let output = "";
 async function getNftData(chainId, address, token_id) {
@@ -12,17 +14,23 @@ async function getNftData(chainId, address, token_id) {
 	const response = await fetch(url);
 	const result = await response.json();
 	const data = result.data.items[0].nft_data[0];
-	console.log("Data = ", data)
+	//console.log("Data = ", data)
 	const tokenid = data.token_id;
 	const name_l = data["external_data"].name;
 	const description_l = data["external_data"].description;
 	const image_l = data["external_data"].image;
-	console.log("Nft Name = " + name_l + "Description =" + description_l + "image=" + image_l)
+	//console.log("Nft Name = " + name_l + "Description =" + description_l + "image=" + image_l)
 	const price = data["token_quote_rate_eth"]
-	console.log("Price = " + price)
+	//console.log("Price = " + price)
 	pushData(name_l, description_l, image_l, price);
 	return data;
 } 
+function getaddr(){
+	var address= document.getElementById("waddress").value;
+	console.log("The wallet address is  " + address);
+  console.log("I am executed")
+  
+  }
 
 console.log("Hello")
 async function getTokenData(chainId, address) {
