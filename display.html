@@ -1,19 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="script.js"></script> <!-- link to the javascript file -->
-  <link href="assets/css/style.css" rel="stylesheet">
 
 
+  <title>NFT_ShowCase</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
+  <link rel="stylesheet" href="assets/display_css/style.css">
+
+  <link rel="stylesheet" href="assets/card_css/style.css">
 </head>
 <body>
-    <input type="text" id="waddress" class="btn-get-started animate__animated animate__fadeInUp scrollto" style="color: black;" placeholder="Enter Wallet Address"><br>
-      <button onclick="getaddr()">Click me</button>
-  <div class="products"></div>
-
+    <!-- partial:index.partial.html -->
+    <div class="container">
+      <div class="webflow-style-input">
+        <input class="" type="text" id="waddress" placeholder="Enter Wallet Address"></input>
+        <div style="float:right;" class="select">
+          <select name="format" id="format">
+             <option selected disabled>Select a Chain_ID</option>
+             <option value=1 >Ethereum</option>
+             <option value=137 >Matic/Ployon</option>
+          </select>
+        </div>
+        <!-- <button onclick="getaddr()" type="submit" ><i class="icon ion-android-arrow-forward"></i></button> -->
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <button onclick="getaddr()" type="submit" >  Search</button>
+       </div>
+       <div class="grid"></div>
+    </div>
+    <!-- partial -->
+  
 </body>
 </html>
