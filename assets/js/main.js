@@ -12,7 +12,7 @@
    * Easy selector helper function
    */
   const select = (el, all = false) => {
-    el = el.trim()
+    
     if (all) {
       return [...document.querySelectorAll(el)]
     } else {
@@ -94,7 +94,7 @@
   /**
    * Back to top button
    */
-  let backtotop = select('.back-to-top')
+   let backtotop = select('.back-to-top')
   if (backtotop) {
     const toggleBacktotop = () => {
       if (window.scrollY > 100) {
@@ -118,14 +118,13 @@
 
   /**
    * Mobile nav dropdowns activate
-   */
-  on('click', '.navbar .dropdown > a', function(e) {
+*/
+ on('click', '.navbar .dropdown > a', function(e) {
     if (select('#navbar').classList.contains('navbar-mobile')) {
       e.preventDefault()
       this.nextElementSibling.classList.toggle('dropdown-active')
     }
   }, true)
-
   /**
    * Scrool with ofset on links with a class name .scrollto
    */

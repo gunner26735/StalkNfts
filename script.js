@@ -1,20 +1,20 @@
 
 const APIKEY = 'ckey_bcf2a8cd82204dc3a01733fa007';
 const baseURL = 'https://api.covalenthq.com/v1';
-const addr = document.getElementById("waddress").value;
-console.log("Address is "+addr);
 const blockchainChainId = '1'
-const demoAddress = '0xDc35C75d027E4E65824cC656f655BcA90505C722'// IMP addr : 0xe4605d46fd0b3f8329d936a8b258d69276cba264
+var demoAddress =" ";
+//= '0xDc35C75d027E4E65824cC656f655BcA90505C722'// IMP addr : 0xe4605d46fd0b3f8329d936a8b258d69276cba264
 const token_ids = []
 let output = "";
 async function getNftData(chainId, address, token_id) {
 
+	console.log("Address = "+address)
 	const url = new URL(`${baseURL}/${chainId}/tokens/${address}/nft_metadata/${token_id}/?key=${APIKEY}`);
 
 	const response = await fetch(url);
 	const result = await response.json();
 	const data = result.data.items[0].nft_data[0];
-	//console.log("Data = ", data)
+	console.log("Data = ", data)
 	const tokenid = data.token_id;
 	const name_l = data["external_data"].name;
 	const description_l = data["external_data"].description;
@@ -26,15 +26,17 @@ async function getNftData(chainId, address, token_id) {
 	return data;
 } 
 function getaddr(){
-	var address= document.getElementById("waddress").value;
-	console.log("The wallet address is  " + address);
+	var demoAddress= document.getElementById("waddress").value;
+	console.log("The wallet address is  " + demoAddress);
   console.log("I am executed")
+  console.log(typeof(demoAddress))
+getTokenData(blockchainChainId, demoAddress);
   
   }
 
-console.log("Hello")
 async function getTokenData(chainId, address) {
 	const url = new URL(`${baseURL}/${chainId}/tokens/${address}/nft_token_ids/?key=${APIKEY}`);
+	console.log("In Gettokendata")
 
 	const response = await fetch(url);
 	const result = await response.json();
@@ -42,13 +44,11 @@ async function getTokenData(chainId, address) {
 	// do data.length to make it dynamic
 	for (var i = 0; i <7; i++) {
 		//token_ids[i] = data[i]["token_id"]
-		getNftData(blockchainChainId, demoAddress, data[i]["token_id"]);
+		getNftData(blockchainChainId, address, data[i]["token_id"]);
 	}
-	console.log(token_ids)
 	
 }
 
-getTokenData(blockchainChainId, demoAddress);
 
 
 function pushData(name_l, desc, image, price) {
