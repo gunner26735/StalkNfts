@@ -28,7 +28,7 @@ async function getNftData(chainId, address) {
 				const description_l = (data[i]["nft_data"][j].external_data["description"]).substring(0,200);
 				const image_l = data[i]["nft_data"][j].external_data["image_256"];
 				const price = data[i]["nft_data"][j].token_price_wei
-				console.log("Nft Name = " + name_l + "Description =" + description_l + "image=" + image_l)
+				console.log("Nft Name = " + name_l + "Price"+ price)
 				if((name_l.includes("Airdrop") || name_l.includes("AIRDROP-PASS")) != true){
 					pushData(name_l, description_l, image_l, price);
 
